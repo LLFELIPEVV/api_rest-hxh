@@ -11,6 +11,7 @@ class Personaje(models.Model):
 
 class Habilidad(models.Model):
     nombre = models.CharField(max_length=100)
+    descripcion = models.TextField()
     categoria = models.ForeignKey('CategoriaHabilidad', on_delete=models.CASCADE)
 
     def __str__(self):
