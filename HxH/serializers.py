@@ -15,3 +15,5 @@ class HabilidadSerializer(serializers.ModelSerializer):
     class Meta:
         model = Habilidad
         fields = '__all__'
+
+
