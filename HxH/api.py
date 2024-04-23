@@ -18,8 +18,6 @@ class HabilidadViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.AllowAny]
     serializer_class = HabilidadSerializer
 
-"""--- Buscar como unir varios tipos de filtrado ---"""
-
 # Se hereda de PersonajeViewSet para tener la query y CRUD sin tener que duplicar el codigo, y poder filtrar esos resultados
 class Filtrado(PersonajeViewSet):
     # Se especifica que se usara SearchFilter como backend de filtrado
@@ -28,5 +26,17 @@ class Filtrado(PersonajeViewSet):
     search_fields = ['nombre', 'tipo']  
 
 class Ordenamiento(PersonajeViewSet):
+    # Se habilita el filtro de ordenamiento
     filter_backends = [OrderingFilter]
+    # Se habilitan los campos por los que puede ordenado
     ordering_fields = ['nombre', 'tipo', 'habilidades']
+
+class FiltroOrdenamiento(PersonajeViewSet):
+    filter_backends = [SearchFilter, OrderingFilter]
+    search_fields = ['nombre', 'tipo']  
+    ordering_fields = ['nombre', 'tipo', 'habilidades']
+
+class FiltroOrdenamiento2(Filtrado, Ordenamiento):
+    pass
+
+
