@@ -1,5 +1,6 @@
-from django.urls import path
+from django.urls import path, include
 from rest_framework import routers
+from rest_framework.documentation import include_docs_urls
 from .api import *
 
 router = routers.DefaultRouter()
@@ -11,4 +12,8 @@ router.register('categoria-habilidad', CategoriaHabilidadViewSet, 'categoria hab
 router.register('habilidad', HabilidadViewSet, 'habilidades')
 router.register('busqueda_personaje', Filtrado, basename='busqueda_personaje')
 
-urlpatterns = router.urls
+urlpatterns = [
+    path('docs/', include_docs_urls(title="HxH API"))
+]
+
+urlpatterns += router.urls
