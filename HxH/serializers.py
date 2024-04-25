@@ -1,10 +1,5 @@
 from .models import *
 from rest_framework import serializers
-
-class PersonajeSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Personaje
-        fields = '__all__'
     
 class CategoriaHabilidadSerializer(serializers.ModelSerializer):
     class Meta:
@@ -14,6 +9,11 @@ class CategoriaHabilidadSerializer(serializers.ModelSerializer):
 class HabilidadSerializer(serializers.ModelSerializer):
     class Meta:
         model = Habilidad
-        fields = '__all__'
+        fields = ['id', 'nombre', 'descripcion', 'categoria']
 
-
+class PersonajeSerializer(serializers.ModelSerializer):
+    habilidades = HabilidadSerializer(many=True)
+    
+    class Meta:
+        model = Personaje
+        fields = ['id', 'nombre', 'tipo', 'habilidades']
