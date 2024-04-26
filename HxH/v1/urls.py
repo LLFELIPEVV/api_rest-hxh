@@ -13,7 +13,7 @@ router.register('habilidad', HabilidadViewSet, 'habilidades')
 router.register('busqueda_personaje', Filtrado, basename='busqueda_personaje')
 
 urlpatterns = [
-    path('docs/', include_docs_urls(title="HxH API"))
+    path('docs/', include_docs_urls(title="HxH API V1.0", description="Version 1.0 de la api de Hunter x Hunter"))
 ]
 
 urlpatterns += router.urls

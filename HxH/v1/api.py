@@ -1,4 +1,4 @@
-from .models import *
+from ..models import *
 from rest_framework import viewsets, permissions
 from rest_framework.filters import SearchFilter, OrderingFilter
 from .serializers import *
